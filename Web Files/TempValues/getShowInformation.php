@@ -12,7 +12,7 @@
 				'thumbnail' => 'dalthumb.jpg', 'banner' => 'dalbanner.jpg', 'performances' => $performances, 'directors' => $directors, 'actors' => $actors, 'crew' => $crew );
 		}
 		elseif($id == 2) {
-			$performances = ['2015-10-30 19:30','2015-10-31 19:30','2015-11-01 14:30','2015-11-06 19:30','2016-11-07 19:30'];
+			$performances = ['2015-10-30 19:30','2015-10-31 19:30','2015-11-01 14:30','2015-11-06 19:30','2015-11-07 19:30'];
 			
 			$info = array('title' => 'Much Ado About Nothing', 'subtitle' => '', 'synopsis' => 'Considered one of Shakespeare’s best comedies contrasting two pairs of lovers in a witty and suspenseful battle of the sexes. Attracted to each other, the maddeningly skeptical Beatrice and Benedick are dead-locked in a lively war of words until their friends hatch a plot to unite them. The mutually devoted Hero and Claudio, on the other hand, all too quickly fall victim to a malicious plot to part them. Near-fatal complications ensue, but with the help of the hilarious Constable Dogberry and his confederates, the lovers are ultimately united.',
 				'thumbnail' => 'maanthumb.jpg', 'banner' => 'muchado5.jpg', 'performances' => $performances );

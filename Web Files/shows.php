@@ -19,19 +19,19 @@
 				<div class="showinfo">
 					<h3>Much Ado About Nothing</h3>
 					<a href="show.php?showId=2"><img class="thumbnail" src="ShowFront/maanthumb.jpg" alt="Much Ado About Nothing"></a>
-					<p>Specific Dates</p>
+					<p>Oct 30 - Nov 7, 2015</p>
 				</div>
 				<div class="showinfo">
 					<h3>Dancing at Lughnasa</h3>
 					<a href="show.php?showId=1"><img class="thumbnail" src="ShowFront/dalthumb.jpg" alt="Dancing at Lughnasa"></a>
-					<p>Specific Dates</p>
+					<p>Jan 29 - Feb 6, 2016</p>
 				</div>
 			</div>
 			<div class="wrapper">
 				<div class="showinfo">
 					<h3>West Side Story</h3>
 					<a href="show.php?showId=3"><img class="thumbnail" src="ShowFront/wssthumb.jpg" alt="West Side Story"></a>
-					<p>Specific Dates</p>
+					<p>Apr 22 - Apr 30, 2016</p>
 				</div>
 				<div class="showinfo">
 					<h3>The 2015-2016 Short Plays</h3>
