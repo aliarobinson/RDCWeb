@@ -1,0 +1,265 @@
+body {
+	background-color: #404040;
+	background-image: url("background2.jpg");
+	text-align: center;
+	font-family: Century Gothic, Gadugi, Calibri Light, Corbel, Arial;
+	color: #555555;
+}
+
+h1 {
+	color: #800000;
+	text-align: left;
+
+}
+
+h1::after {
+	content: "";
+    display: block;
+    height: 1px;
+    margin: 10px;
+	margin-left: 0px;
+    background: #800000;
+}
+
+h2 {
+	color: #800000;
+}
+
+a {
+	color: #B50000;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+td {
+	text-align: left;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 5px;
+}
+
+select {
+	margin-left: 20px;
+	margin-right: 20px;
+	
+}
+
+/*form {
+	display: inline-block;
+	text-align: right;
+}*/
+
+.wrapper {
+	display: inline-block;
+}
+
+.subtitle {
+	text-align: left;
+}
+
+#pagecontainer {
+	background-color: white;
+	margin: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px;
+	padding-top: 25px;
+	max-width: 1000px;
+	border-radius: 5px;
+	box-shadow: -5px 5px 10px #202020;
+}
+
+#logowrapper {
+	width: 25%;
+	min-width: 200px;
+	vertical-align: middle;
+	text-align: left;
+}
+
+#pageheadlinks {
+	width: 70%;
+	font-size: 1.5em;
+	color: #909090;
+}
+
+.pageheadlink {
+	padding-left: 20px;
+	padding-right: 20px;
+	border-left-style: solid;
+	border-left-width: 2px;
+	text-decoration: none;
+	color: #909090;
+}
+
+.pageheadlink:first-child {
+	border-left-style: none;
+}
+
+.content-item {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	margin-left: 15px;
+	margin-right: 15px;
+
+}
+
+.content-item > img {
+	max-width: 90%;
+}
+
+.thumb-wrap, .third-wrap {
+	display: inline-block;
+	width: 45%;
+	padding: 0px;
+	margin-top: 10px;
+	margin-top: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	vertical-align: top;
+}
+
+.third-wrap {
+	width: 30%;
+}
+
+.fourth-wrap {
+	display: inline-block;
+	width: 20%;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.show-prev-wide {
+	width: 80%;
+}
+
+.thumbnail {
+	width: 200px;
+	height: 200px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.showinfo {
+	display: inline-block;
+	width: 220px;
+}
+
+.right-aligned-form {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: right;
+}
+
+.justified-text{
+	text-align: justify;
+}
+
+.centered-text {
+	text-align: center;
+}
+
+.right-aligned-text {
+	text-align: right;
+}
+
+.condensed-text{
+	text-align: justify;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.centered-item {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.condensed {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* The following adjustments allow the page to respond to different viewport sizes, such as adapting the layout to better suit mobile phones */
+
+@media only screen and (max-width: 999px) {
+	#pageheadlinks {
+		font-size: 1.35em;
+	}
+}
+
+@media only screen and (max-width: 920px) {
+	#pageheadlinks {
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 860px) {
+	#pageheadlinks {
+		font-size: 1em;
+	}
+}
+
+@media only screen and (max-width: 780px) {
+	#logowrapper {
+		text-align: center;
+	}
+
+	#pageheadlinks {
+		width: 100%;
+	}
+	
+	.thumb-wrap {
+		width: 70%;
+	}
+}
+
+@media only screen and (max-width: 570px) {
+	.pageheadlink {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+@media only screen and (max-width: 475px) {
+	#pagecontainer {
+		padding: 10px;
+	}
+	
+	.pageheadlink {
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+	
+	#pageheadlinks {
+		font-size: .8em;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	
+	.pageheadlink {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	
+	#pageheadlinks {
+		font-size: .7em;
+	}
+}
