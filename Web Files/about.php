@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
+  <title>About Us - Rose Drama Club</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />

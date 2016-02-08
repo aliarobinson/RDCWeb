@@ -30,5 +30,24 @@
 		
 		
 	}
+	
+	function getShowInfoFromDb($id) {
+		include("dbaction/titanconnect.php");
+			
+			$query = "{call dbo.SelectAllFromShowID (?)}";
+			$params = array(array($id, SQLSRV_PARAM_IN));
+			$stmt = sqlsrv_query($conn, $query, $params);
+			/*while( $obj = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
+				echo($obj['Title']);
+				echo("<br>");
+			}*/
+			//while($result = sqlsrv_fetch_array($result, )
+			
+			$information = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+			
+			sqlsrv_free_stmt($stmt);
+			sqlsrv_close($conn);
+			return $information;
+	}
 
 ?>

@@ -11,7 +11,7 @@
 		
 		<?php
 			include ("header.html");
-			require ("TempValues/getShowInformation.php");
+			require ("dbaction/dbRetrieveInfo.php");
 			
 			// memberArray represents an associative array of roles and names retrieved from the show information.
 			// This function prints the names in a table format
@@ -34,15 +34,16 @@
 			}
 			
 			// Call getShowInfo with the show ID as a parameter. This retrieves all the information we have for that show.
-			$information = json_decode(getShowInfo($showId));
+			$information = getShowInfo($showId);
+			$dates = getShowDates($showId);
 			
 			
-			if(isset($information) && is_object($information)) {
-				if(isset($information->banner)) {
+			if(isset($information)) {
+				if(isset($information['BannerURL'])) {
 					// This assumes that banners and thumbnails will be stored in the ShowFront folder
-					$bannerUrl = "ShowFront/" . $information->banner;
+					$bannerUrl = "ShowFront/" . $information['BannerURL'];
 				}
-				$title = $information->title;
+				$title = $information['Title'];
 			}
 			else { // Gracefully handle error ?> 
 				<div class="content-item">
@@ -65,17 +66,20 @@
 		
 		<div class="content-item">
 			<?php // The performance dates for this show
-			if(isset($information->performances)) { ?>
+			if(isset($information['Quarter'])) { ?>
+				<p class="justified-text"> <?=$information['Quarter']?> Quarter</p>
+			<?php }
+			
+			if(isset($dates)) { ?>
 				<table>
 					<?php
-						$dates = $information->performances;
-						for($i = 0; $i < count($dates); $i++) {
-							$timestamp = strtotime($dates[$i]);
-						echo("<tr><td>");
-						echo(date("F j, Y", $timestamp));
-						echo("</td><td>");
-						echo(date("g:i A", $timestamp));
-						echo("</td></tr>");
+						foreach($dates as $date) {
+							$timestamp = $date['DateTime'];
+							echo("<tr><td>");
+							echo($timestamp->format("F j, Y"));
+							echo("</td><td>");
+							echo($timestamp->format("g:i A"));
+							echo("</td></tr>");
 						}
 					?>
 				</table>
@@ -85,23 +89,23 @@
 			<!--p><a href="photos.php">View Photo Gallery</a></p-->
 			
 			<?php // Display a synopsis of the show
-			if(isset($information->synopsis)) { ?>
-				<p class="justified-text"><?=$information->synopsis?></p>
+			if(isset($information['Synopsis'])) { ?>
+				<p class="justified-text"><?=$information['Synopsis']?></p>
 			<?php } // Close synopsis date block ?>
 			
 			<?php // Print the directors above the cast information. This typically will be one or two people. 
-			if(isset($information->directors)) { 
-				printMembersAsTableRows($information->directors);
+			if(isset($information['directors'])) { 
+				printMembersAsTableRows($information['directors']);
 			} 
 			
-			if(isset($information->actors)) { ?>
+			if(isset($information['actors'])) { ?>
 				<h2>Cast</h2>
-				<?php printMembersAsTableRows($information->actors) ;
+				<?php printMembersAsTableRows($information['actors']) ;
 			}
 			
-			if(isset($information->crew)) { ?>
+			if(isset($information['crew'])) { ?>
 				<h2>Crew</h2>
-				<?php printMembersAsTableRows($information->crew);
+				<?php printMembersAsTableRows($information['crew']);
 			}
 			?>
 		</div>		

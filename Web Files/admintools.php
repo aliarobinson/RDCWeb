@@ -11,18 +11,32 @@
 		
 		<?php
 			include ("header.html");
+			require("dbaction/dbRetrieveInfo.php");
+			
+			$showlist = getAllShows();
+			
 		?>
 		
 		<div class="content-item">
-			<h2>Edit Show Information</h2>
-			<form action="editShow.php" id="editshow">
-			  <select name="showId" form="editshow">
-				  <option value="create">Add New Show</option>
-				</select>
-				<input type="submit" value="Go" />
-			</form>
-		</div>
-		
+			<div class="thumb-wrap">
+				<h2>Edit Show Information</h2>
+				<form action="editShow.php" id="editshow">
+				  <select name="showId" form="editshow">
+					  <option value="create">Add New Show</option>
+					  <?php
+						foreach($showlist as $show) { ?>
+							<option value=<?=$show['ShowID']?> ><?=$show['Title']?></option>
+						<?php } ?>
+					</select>
+					<input type="submit" value="Go" />
+				</form>
+			</div>
+			<div class="thumb-wrap">
+				<h2>Other Actions</h2>
+				<p><a href="biomanager.php">Manage Biographies</a></p>
+				<p><a href="accountmanager.php">Manage Accounts</a></p>
+			</div>
+		</div>		
 	</div>
 </body>
 </html>

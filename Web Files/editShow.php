@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
+  <title>Edit Show - Rose Drama Club</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
@@ -11,10 +11,13 @@
 		
 		<?php
 			include ("header.html");
+			require("dbaction/dbRetrieveInfo.php");
 
 			//Get the information for an existing show
 			if(isset($_GET["showId"])) {
 				$sid = $_GET["showId"];
+				
+				$info = getShowInfo($sid);
 			}
 			
 		?>
@@ -23,13 +26,17 @@
 				<?php 
 					if(isset($sid)) { ?>
 					<input type="hidden" name="showId"> 
-					<?php } ?>
+				<?php } ?>
 				<h2>General Information</h2>
-				<div>Title (Required):<input type="text" name="showTitle" ></div>
-				<div>Subtitle (Not required):<input type="text" name="showSubtitle" ></div>
-				<div>Synopsis (Max 800 characters):<textarea name="showSynopsis" form="saveShow"></textarea></div>
+				<div>Title (Required):<input type="text" name="showTitle" 
+					<?php if(isset($info['Title'])) { echo("value='" . $info['Title'] . "'"); } ?> ></div>
+				<div>Subtitle (Not required):<input type="text" name="showSubtitle" 
+					<?php if(isset($info['Subtitle'])) { echo("value='" . $info['Subtitle'] . "'"); } ?> ></div>
+				<div>Synopsis (Max 800 characters):<textarea name="showSynopsis" form="saveShow">
+					<?php if(isset($info['Synopsis'])) { echo($info['Synopsis']); } ?>
+				</textarea></div>
 				
-				<h2>Web Logos</h2>
+				<!--h2>Web Logos</h2-->
 				<!-- TODO -->
 				
 				<h2>Performance Dates</h2>

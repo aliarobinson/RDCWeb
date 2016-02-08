@@ -47,16 +47,16 @@ table {
 	margin-right: auto;
 }
 
-input {
+input, select {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-bottom: 5px;
 }
 
-select {
-	margin-left: 20px;
-	margin-right: 20px;
-	
+textarea {
+	resize: none;
+	width: 400px;
+	height: 200px;
 }
 
 /*form {
@@ -175,6 +175,10 @@ select {
 	text-align: center;
 }
 
+.left-aligned-text {
+	text-align: left;
+}
+
 .right-aligned-text {
 	text-align: right;
 }
@@ -194,6 +198,10 @@ select {
 .condensed {
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+.error {
+	color: red;
 }
 
 /* The following adjustments allow the page to respond to different viewport sizes, such as adapting the layout to better suit mobile phones */

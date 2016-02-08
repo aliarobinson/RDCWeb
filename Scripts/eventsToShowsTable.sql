@@ -1,0 +1,5 @@
+CREATE TABLE Events_to_Shows
+(
+	EventID int FOREIGN KEY REFERENCES Event(EventID),
+	ShowID int FOREIGN KEY REFERENCES Show(ShowID)
+)
