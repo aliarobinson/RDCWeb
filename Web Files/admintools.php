@@ -1,3 +1,6 @@
+<?php
+	include("validateadmin.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +33,19 @@
 					</select>
 					<input type="submit" value="Go" />
 				</form>
+				<h2>Edit News Article</h2>
+				<form action="newseditor.php" id="editnews">
+					<select name="articleID" form="editnews">
+						<option value="create">Add New Article</option>
+					</select>
+					<input type="submit" value="Go" />
+				</form>
 			</div>
 			<div class="thumb-wrap">
 				<h2>Other Actions</h2>
 				<p><a href="biomanager.php">Manage Biographies</a></p>
 				<p><a href="accountmanager.php">Manage Accounts</a></p>
+				<p><a href="photomanager.php">Manage Photos</a></p>
 			</div>
 		</div>		
 	</div>

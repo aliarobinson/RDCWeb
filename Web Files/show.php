@@ -74,7 +74,7 @@
 				<table>
 					<?php
 						foreach($dates as $date) {
-							$timestamp = $date['DateTime'];
+							$timestamp = $date['EventDate'];
 							echo("<tr><td>");
 							echo($timestamp->format("F j, Y"));
 							echo("</td><td>");
