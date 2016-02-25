@@ -2,36 +2,31 @@
 <?php
 	//This page should display a list of all short plays within one school year
 	require("dbaction/dbRetrieveInfo.php");
+	require("printUtils.php");
 
-	$showInfo = getShowInfo(1);
+	$season = $_GET["season"];
+	$sets = getShortPlaySetsInYear($season);
 	
 	//This prints the information for a single show
 	function writeShowInformation($info) {
+		$actors = getShowRoles($info["ShowID"], "Actor");
+		$directors = getShowRoles($info["ShowID"], "Director");
+		
 		echo("<div class='content-item'>");
 		echo("<h3>" . $info['Title'] . "</h3>");
 		
 		echo("<div class='thumb-wrap'>");
 		echo("<p class='justified-text'>" . $info['Synopsis'] . "</p>");
 		echo("Directed by ");
+		printMembersAsNameList($directors);
 		echo("<br>");
 		echo("Written by ");
+		//printMembersAsNameList($writers);
 		echo("</div>");
 		
 		echo("<div class='thumb-wrap'>");
+		printMembersAsTableRows($actors, 1);
 		echo("</div></div>");
-	}
-	
-	//This prints a table with the names of the cast
-	function printMembersAsTableRows($memberArray) {
-		echo("<table>");
-		foreach($memberArray as $mem) {
-			echo("<tr><td>");
-			echo($mem['Character']);
-			echo("</td><td>");
-			echo($mem['Name']);
-			echo("</td></tr>");
-		}
-		echo("</table>");
 	}
 ?>
 <html lang="en">
@@ -47,9 +42,16 @@
 		<?php
 			include ("header.html");
 			
-			echo("<h1>Winter 2016</h1>");
-			writeShowInformation($showInfo);
-			writeShowInformation($showInfo);
+			foreach($sets AS $set) {
+				$setinfo = getShowsInShortPlaySet($set["SetID"]);
+				$dates = getShowDates($set["SetID"]);
+				echo("<h1>");
+				echo($set['Quarter']);
+				echo("</h1>");
+				foreach($setinfo as $shortshow) {
+					writeShowInformation($shortshow);
+				}
+			}
 		?>
 		
 		

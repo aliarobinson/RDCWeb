@@ -15,6 +15,7 @@
 		<?php
 			include ("header.html");
 			require("dbaction/dbRetrieveInfo.php");
+			require("infoUtils.php");
 			require("printUtils.php");
 
 			//Get the information for an existing show
@@ -23,16 +24,22 @@
 				
 			}
 			
+			printAllMembersDatalist();
 		?>
 		
 		<div class="content-item">
-			<form action="dbaction/saveShortPlays.php" id="saveShow" name="saveShow" method='post'>
+			<form action="dbaction/saveShortPlaySet.php" id="saveShow" name="saveShow" method='post'>
+				<input id="script-type" type="hidden" value="shortplay" />
 				<?php 
 					if(isset($sid)) { ?>
 					<input type="hidden" name="showId"> 
 				<?php } 
 					printDateInputBlock(array());
 				?>
+				<div id="show-forms">
+				</div>
+				<input id="add-show" type="button" value="Add Show">
+				<input id="save-show-info" type="submit" value="Save">
 			</form>
 		</div>
 		

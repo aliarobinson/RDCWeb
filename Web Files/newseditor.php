@@ -14,6 +14,7 @@
 		
 		<?php
 			include ("header.html");
+			require("dbaction/dbRetrieveInfo.php");
 			require ("infoUtils.php");
 			
 			//Populate a datalist of all members

@@ -12,20 +12,7 @@
 		<?php
 			include ("header.html");
 			require ("dbaction/dbRetrieveInfo.php");
-			
-			// memberArray represents an associative array of roles and names retrieved from the show information.
-			// This function prints the names in a table format
-			function printMembersAsTableRows($memberArray) {
-				echo("<table>");
-				foreach($memberArray as $role => $member) {
-					echo("<tr><td>");
-					echo($role);
-					echo("</td><td>");
-					echo($member);
-					echo("</td></tr>");
-				}
-				echo("</table>");
-			}
+			require("printUtils.php");
 			
 			//TODO figure out default behavior
 			$showId = 0;
@@ -35,13 +22,21 @@
 			
 			// Call getShowInfo with the show ID as a parameter. This retrieves all the information we have for that show.
 			$information = getShowInfo($showId);
+			$logos = getShowLogos($showId);
 			$dates = getShowDates($showId);
+			$writers = getShowWriters($showId);
+			$actors = getShowRoles($showId, "Actor");
+			$crew = getShowRoles($showId, "Tech");
+			$pit = getShowRoles($showId, "Pit");
+			$directors = getShowRoles($showId, "Director");
+			$production = getShowRoles($showId, "Production");
+			$guests = getShowRoles($showId, "Guest");
 			
 			
 			if(isset($information)) {
-				if(isset($information['BannerURL'])) {
-					// This assumes that banners and thumbnails will be stored in the ShowFront folder
-					$bannerUrl = "ShowFront/" . $information['BannerURL'];
+				if(isset($logos['Banner'])) {
+					// This assumes that banners and thumbnails will be stored in the current directory + the given url
+					$bannerUrl =  $logos['Banner'];
 				}
 				$title = $information['Title'];
 			}
@@ -56,7 +51,7 @@
 				<div class="content-item"> 
 				<?php
 				if(isset($bannerUrl)) { ?>
-					<img alt='<?= $title ?>' src=<?= $bannerUrl ?>>
+					<img alt='<?= $title ?>' src='dbaction/rdcphotos/<?= $bannerUrl ?>'>
 				<?php }
 				else { ?>
 					<h1><?= $title ?></h1>
@@ -65,11 +60,31 @@
 			<?php } // Close title block ?>
 		
 		<div class="content-item">
-			<?php // The performance dates for this show
-			if(isset($information['Quarter'])) { ?>
-				<p class="justified-text"> <?=$information['Quarter']?> Quarter</p>
-			<?php }
+			<?php 
+			// The writers for this show
+			if(isset($writers)) {
+				if(count($writers) == 1) {
+					echo("<p>By ");
+					echo($writers[0]["Name"]);
+					echo("</p>");
+				}
+				else if(count($writers) > 1) {
+					echo("<p>");
+					for($i = 0; $i < count($writers) - 1; $i++) {
+						echo($writers[$i]["Role"]);
+						echo(" by ");
+						echo($writers[$i]["Name"]);
+						echo(", ");
+					}
+					echo($writers[count($writers) - 1]["Role"]);
+					echo(" by ");
+					echo($writers[count($writers) - 1]["Name"]);
+					echo("</p>");
+				}
+				//If there are 0 writers, don't do anything
+			}
 			
+			// The performance dates for this show
 			if(isset($dates)) { ?>
 				<table>
 					<?php
@@ -94,19 +109,41 @@
 			<?php } // Close synopsis date block ?>
 			
 			<?php // Print the directors above the cast information. This typically will be one or two people. 
-			if(isset($information['directors'])) { 
-				printMembersAsTableRows($information['directors']);
+			if(isset($directors)) { 
+				printMembersAsTableRows($directors, 1);
 			} 
 			
-			if(isset($information['actors'])) { ?>
-				<h2>Cast</h2>
-				<?php printMembersAsTableRows($information['actors']) ;
-			}
+			if(isset($production)) { 
+				printMembersAsTableRows($production, 2);
+			} 
 			
-			if(isset($information['crew'])) { ?>
-				<h2>Crew</h2>
-				<?php printMembersAsTableRows($information['crew']);
-			}
+			if(isset($actors) && count($actors) > 0) { ?>
+				<div class="thumb-wrap">
+					<h2>Cast</h2>
+					<?php printMembersAsTableRows($actors, 1); ?>
+				</div>
+			<?php }
+			
+			if(isset($crew) && count($crew) > 0) { ?>
+				<div class="thumb-wrap">
+					<h2>Crew</h2>
+					<?php printMembersAsTableRows($crew, 1); ?>
+				</div>
+			<?php }
+			
+			if(isset($pit) && count($pit) > 0) { ?>
+				<div class="thumb-wrap">
+					<h2>Orchestra</h2>
+					<?php printMembersAsNameList($pit); ?>
+				</div>
+			<?php }
+			
+			if(isset($guests) && count($guests) > 0) { ?>
+				<div class="thumb-wrap">
+					<h2>Special Thanks</h2>
+					<?php printMembersAsNameList($guests); ?>
+				</div>
+			<?php }
 			?>
 		</div>		
 	</div>

@@ -18,11 +18,13 @@
 		
 		<div class="content-item">
 			<div class="thumb-wrap">
-				<h3>Create new Account</h3>
-				Username: <input type="text" id="username"></input><br>
-				Password: <input type="password" id="pass1"></input><br>
-				Confirm Password: <input type="password" id="pass2"></input><br>
-				<input type="button" value="Create"></input>
+				<form action="dbaction/createAccount.php" method="post">
+					<h3>Create new Account</h3>
+					Username: <input type="text" name="username"></input><br>
+					Password: <input type="password" name="pass1"></input><br>
+					Confirm Password: <input type="password" name="pass2"></input><br>
+					<input type="submit" value="Create"></input>
+				</form>
 			</div>
 			<div class="thumb-wrap">
 				<h3>Manage Account</h3>

@@ -1,6 +1,5 @@
 <?php
-	require("dbaction/dbRetrieveInfo.php");
-	
+
 	function printAllMembersDatalist() {
 		$allMembers = getAllMembers();
 		printMemberDatalist($allMembers);
