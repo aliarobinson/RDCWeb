@@ -1,5 +1,24 @@
 <?php
 	include("validateadmin.php");
+	
+	require_once("rdcwebconstants.php");
+	require_once("dbaction/dbRetrieveInfo.php");
+	require_once("printUtils.php");
+	require_once("infoUtils.php");
+
+	//Get the information for an existing show
+	$info = null;
+	$dates = null;
+	$logos = null;
+	
+	if(isset($_GET["showId"])) {
+		$sid = $_GET["showId"];
+		if($sid != "create") {
+			$info = getShowInfo($sid);
+			$dates = getShowDates($sid);
+			$logos = getShowLogos($sid);
+		}
+	}		
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,31 +26,12 @@
   <title>Edit Show - Rose Drama Club</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include("header.html");
-			require_once("rdcwebconstants.php");
-			require_once("dbaction/dbRetrieveInfo.php");
-			require_once("printUtils.php");
-			require_once("infoUtils.php");
-
-			//Get the information for an existing show
-			$info = null;
-			$dates = null;
-			$logos = null;
-			
-			if(isset($_GET["showId"])) {
-				$sid = $_GET["showId"];
-				if($sid != "create") {
-					$info = getShowInfo($sid);
-					$dates = getShowDates($sid);
-					$logos = getShowLogos($sid);
-				}
-			}
+		<?php include("header.html");
 			
 			printAllMembersDatalist();
 			
@@ -88,7 +88,7 @@
 	</div>
 </body>
 </html>
-<script src="scripts/plugins/jquery-1.12.1.min.js" type="text/javascript"></script>
-<script src="scripts/plugins/bpopup.min.js" type="text/javascript"></script>
+<script src="plugins/jquery-1.12.1.min.js" type="text/javascript"></script>
+<script src="plugins/bpopup.min.js" type="text/javascript"></script>
 <script src="scripts/editShow.js" type="text/javascript"></script>
 <script src="scripts/saveShow.js" type="text/javascript"></script>

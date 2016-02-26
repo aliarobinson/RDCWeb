@@ -1,5 +1,8 @@
 <?php
 	include("validateadmin.php");
+	require("dbaction/dbRetrieveInfo.php");
+	
+	$showlist = getAllShows();	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +10,12 @@
   <title>Biography Manager - Rose Drama Club</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-			require("dbaction/dbRetrieveInfo.php");
-			
-			$showlist = getAllShows();
-			
-		?>
+		<?php include ("header.html"); ?>
 		
 		<div class="content-item">
 			<h2>Edit Biography</h2>

@@ -6,6 +6,10 @@ body {
 	color: #555555;
 }
 
+p {
+	text-align: left;
+}
+
 h1 {
 	color: #800000;
 	text-align: left;

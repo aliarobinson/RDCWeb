@@ -1,37 +1,40 @@
+<?php
+	require ("dbaction/dbRetrieveInfo.php");
+	require("printUtils.php");
+
+	//TODO figure out default behavior
+	$showId = 0;
+	if(isset($_GET["showId"])) {
+		$showId = $_GET["showId"];
+	}
+
+	// Call getShowInfo with the show ID as a parameter. This retrieves all the information we have for that show.
+	$information = getShowInfo($showId);
+	$logos = getShowLogos($showId);
+	$dates = getShowDates($showId);
+	$writers = getShowWriters($showId);
+	$actors = getShowRoles($showId, "Actor");
+	$crew = getShowRoles($showId, "Tech");
+	$pit = getShowRoles($showId, "Pit");
+	$directors = getShowRoles($showId, "Director");
+	$production = getShowRoles($showId, "Production");
+	$guests = getShowRoles($showId, "Guest");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
 		<?php
-			include ("header.html");
-			require ("dbaction/dbRetrieveInfo.php");
-			require("printUtils.php");
-			
-			//TODO figure out default behavior
-			$showId = 0;
-			if(isset($_GET["showId"])) {
-				$showId = $_GET["showId"];
-			}
-			
-			// Call getShowInfo with the show ID as a parameter. This retrieves all the information we have for that show.
-			$information = getShowInfo($showId);
-			$logos = getShowLogos($showId);
-			$dates = getShowDates($showId);
-			$writers = getShowWriters($showId);
-			$actors = getShowRoles($showId, "Actor");
-			$crew = getShowRoles($showId, "Tech");
-			$pit = getShowRoles($showId, "Pit");
-			$directors = getShowRoles($showId, "Director");
-			$production = getShowRoles($showId, "Production");
-			$guests = getShowRoles($showId, "Guest");
-			
+			include ("header.html");			
 			
 			if(isset($information)) {
 				if(isset($logos['Banner'])) {
@@ -62,41 +65,34 @@
 		<div class="content-item">
 			<?php 
 			// The writers for this show
-			if(isset($writers)) {
-				if(count($writers) == 1) {
-					echo("<p>By ");
-					echo($writers[0]["Name"]);
-					echo("</p>");
-				}
-				else if(count($writers) > 1) {
-					echo("<p>");
-					for($i = 0; $i < count($writers) - 1; $i++) {
+			if(isset($writers)):
+				if(count($writers) == 1): ?>
+					<p>By <?=$writers[0]["Name"]?></p>
+				<?php endif;
+				else if(count($writers) > 1): ?>
+					<p>
+				<?php for($i = 0; $i < count($writers) - 1; $i++): 
 						echo($writers[$i]["Role"]);
 						echo(" by ");
 						echo($writers[$i]["Name"]);
 						echo(", ");
-					}
+					endfor;
 					echo($writers[count($writers) - 1]["Role"]);
 					echo(" by ");
-					echo($writers[count($writers) - 1]["Name"]);
-					echo("</p>");
-				}
+					echo($writers[count($writers) - 1]["Name"]); ?>
+					</p>
+			<?php	endif;
 				//If there are 0 writers, don't do anything
-			}
+			endif;
 			
 			// The performance dates for this show
 			if(isset($dates)) { ?>
 				<table>
-					<?php
-						foreach($dates as $date) {
-							$timestamp = $date['EventDate'];
-							echo("<tr><td>");
-							echo($timestamp->format("F j, Y"));
-							echo("</td><td>");
-							echo($timestamp->format("g:i A"));
-							echo("</td></tr>");
-						}
-					?>
+					<?php foreach($dates as $date): 
+						$timestamp = $date['EventDate']; ?>
+							<tr><td><?=$timestamp->format("F j, Y")?></td>
+							<td><?=$timestamp->format("g:i A")?></td></tr>
+					<?php endforeach; ?>
 				</table>
 			<?php } // Close performance date block ?>
 			

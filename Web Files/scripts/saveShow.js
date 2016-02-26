@@ -5,7 +5,10 @@ const newMemberTipText = "It looks like these members are new to RDC. Please inp
 
 //Called on load
 function setup() {
-	$('#saveShow').submit(validateShowInput);
+	$('#save-show-info').click(function(ev) {
+		ev.preventDefault();
+		validateShowInput();
+	});
 }
 
 //Called on form submission to validate all input

@@ -4,14 +4,12 @@
   <title>About Us - Rose Drama Club</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-		?>
+		<?php include ("header.html"); ?>
 		
 		<div class="content-item">
 			<h1>Who we are</h1>
@@ -24,24 +22,24 @@
 			<div class="wrapper">
 				<div class="showinfo">
 					<h3>President</h3>
-					<img src="president.jpg" alt="President" width="200px">
+					<img src="stock/president.jpg" alt="President" width="200px">
 					<p><a href="mailto:blankesa@rose-hulman.edu">Scott Blankenbaker</a></p>
 				</div>
 				<div class="showinfo">
 					<h3>Vice President</h3>
-					<img src="vp.jpg" alt="Vice President" width="200px">
+					<img src="stock/vp.jpg" alt="Vice President" width="200px">
 					<p><a href="mailto:weberrk@rose-hulman.edu">Rachel Weber</a></p>
 				</div>
 			</div>
 			<div class="wrapper">
 				<div class="showinfo">
 					<h3>Treasurer</h3>
-					<img src="treasurer.jpg" alt="Treasurer" width="200px">
+					<img src="stock/treasurer.jpg" alt="Treasurer" width="200px">
 					<p><a href="mailto:robinsat@rose-hulman.edu">Alia Robinson</a></p>
 				</div>
 				<div class="showinfo">
 					<h3>Secretary</h3>
-					<img src="secretary.jpg" alt="Secretary" width="200px">
+					<img src="stock/secretary.jpg" alt="Secretary" width="200px">
 					<p><a href="mailto:eberhas@rose-hulman.edu">Sarah Eberhardt</a></p>
 				</div>
 			</div>

@@ -4,10 +4,10 @@
   <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="photoswipe/photoswipe.css" rel="stylesheet" />
-  <link href="photoswipe/default-skin/default-skin.css" rel="stylesheet" />
-  <link href="photoswipe/gallery.css" rel="stylesheet" />
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="plugins/photoswipe/photoswipe.css" rel="stylesheet" />
+  <link href="plugins/photoswipe/default-skin/default-skin.css" rel="stylesheet" />
+  <link href="plugins/photoswipe/gallery.css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
   
 </head>
 <body>
@@ -15,7 +15,7 @@
 	<div id="pagecontainer">
 		
 		<?php
-			require 'Fastimage.php';
+			require 'plugins/Fastimage.php';
 			include ("header.html");
 		?>
 		
@@ -119,6 +119,6 @@
 
 </body>
 </html>
-<script src="photoswipe/photoswipe.min.js"></script>
-<script src="photoswipe/photoswipe-ui-default.min.js"></script>
-<script src="photoswipe/photogallery.js"></script>
+<script src="plugins/photoswipe/photoswipe.min.js"></script>
+<script src="plugins/photoswipe/photoswipe-ui-default.min.js"></script>
+<script src="plugins/photoswipe/photogallery.js"></script>

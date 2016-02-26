@@ -1,39 +1,38 @@
+<?php
+	include ("dateUtils.php");
+	include ("dbaction/dbRetrieveInfo.php");
+	
+	function printDateSubtitle($showResult) { ?>
+		<p class='show-subtitle'>
+		<?php
+		echo(getThumbnailDateFormat($showResult["StartDate"]));
+		if($showResult["StartDate"] != $showResult["EndDate"]) {
+			echo(" - ");
+			echo(getThumbnailDateFormat($showResult["EndDate"]));
+		} ?>
+		</p>
+	<?php } 
+	
+	$currentseasoninfo = getCurrentAdvertisingSeason();
+	foreach($currentseasoninfo as $show) {
+		if(isAfterToday($show["StartDate"])) {
+			$nextShow = $show;
+		}
+	}
+	$curryear = $nextShow["StartDate"]->format("Y");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-			include ("dateUtils.php");
-			include ("dbaction/dbRetrieveInfo.php");
-			
-			function printDateSubtitle($showResult) {
-				echo("<p class='show-subtitle'>");
-				echo(getThumbnailDateFormat($showResult["StartDate"]));
-				if($showResult["StartDate"] != $showResult["EndDate"]) {
-					echo(" - ");
-					echo(getThumbnailDateFormat($showResult["EndDate"]));
-				}
-				echo("</p>");
-			}
-			
-			$currentseasoninfo = getCurrentAdvertisingSeason();
-			foreach($currentseasoninfo as $show) {
-				if(isAfterToday($show["StartDate"])) {
-					$nextShow = $show;
-				}
-			}
-			
-			$curryear = $nextShow["StartDate"]->format("Y");
-			
-		?>
+		<?php include ("header.html"); ?>
 		
 		<div class="content-item" id="next-show">
 			<h1>Coming Up</h1>

@@ -12,9 +12,7 @@
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-		?>
+		<?php include ("header.html"); ?>
 		
 		<form id="photo-upload-form" enctype="multipart/form-data" method="post">
 			<input type="file" id="photo-file-input" name="photo-file-input[]" multiple size="50">

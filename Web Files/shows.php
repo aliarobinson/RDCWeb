@@ -1,31 +1,32 @@
+<?php
+	require ("dateUtils.php");
+	require ("dbaction/dbRetrieveInfo.php");
+
+	function printDateSubtitle($showResult) { ?>
+		<p class='show-subtitle'> <?php
+		echo(getThumbnailDateFormat($showResult["StartDate"]));
+		echo(" - ");
+		echo(getThumbnailDateFormat($showResult["EndDate"]));
+		echo(", ");
+		echo($showResult["StartDate"]->format("Y")); ?>
+		<p>
+	<?php }
+
+	$latestYear = 2015;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-			require ("dateUtils.php");
-			require ("dbaction/dbRetrieveInfo.php");
-			
-			function printDateSubtitle($showResult) {
-				echo("<p class='show-subtitle'>");
-				echo(getThumbnailDateFormat($showResult["StartDate"]));
-				echo(" - ");
-				echo(getThumbnailDateFormat($showResult["EndDate"]));
-				echo(", ");
-				echo($showResult["StartDate"]->format("Y"));
-				echo("</p>");
-			}
-			
-			$latestYear = 2015;
-		?>
+		<?php include ("header.html"); ?>
 		
 		<div class="content-item">
 			<?php 

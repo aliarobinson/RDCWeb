@@ -12,20 +12,15 @@
 		$roleinfo = getMemberRoles($memberId);
 		
 		// Prints the member's roles as a table
-		function printRolesAsTable($rolesArray) {
-			echo("<table>");
-			foreach($rolesArray as $obj) {
-				echo("<tr><td>");
-				echo($obj['Name']);
-				echo("</td><td>");
-				echo("<a href=show.php?showId=" . $obj['ShowId']. " >");
-				echo($obj['Title']);
-				echo("</a>");
-				echo("</td></tr>");
-			}
-			echo("</table>");
-		}
-?>
+		function printRolesAsTable($rolesArray) { ?>
+			<table>
+			<?php foreach($rolesArray as $obj): ?>
+				<tr><td><?=$obj['Name']?></td>
+				<td><a href=show.php?showId='<?=$obj['ShowId']?>'><?=$obj['Title']?></a></td></tr>
+			<?php endforeach; ?>
+			</table>
+		<?php } ?>
+		
 <html lang="en">
 <head>
 <?php //Print the member's name in the page title
@@ -37,7 +32,7 @@ if(isset($information['Name'])) { ?>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">

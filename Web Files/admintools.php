@@ -1,5 +1,9 @@
 <?php
-	include("validateadmin.php");
+	//include("validateadmin.php");
+	//require_once("dbaction/dbRetrieveInfo.php");
+	require_once("templates/printUtils.php");
+	
+	//$showlist = getAllShows();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,31 +11,14 @@
   <title>Rose Drama Club - Rose-Hulman Institute of Technology</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
-  <link href="accordion.css" rel="stylesheet">
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/accordion.css" rel="stylesheet">
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-			require_once("dbaction/dbRetrieveInfo.php");
-			require_once("printUtils.php");
+		<?php include ("header.html");
 			
-			/*function printShowsAsOptions($shows) {
-				foreach($shows as $show): ?>
-					<option value=<?=$show['ShowID']?> ><?=$show['Title']?></option>
-				<?php endforeach;
-			}*/
-			
-			$showlist = getAllShows();
-			
-			/*//Print a datalist of all existing shows ?>
-			<datalist id='allShowsList'>
-				<?php printShowsAsOptions($showlist); ?>
-			</datalist>
-			
-		<?php*/
 			//If there was an error in the last action taken, it is sent to this page and displayed here
 			if(isset($_POST["errmsg"])) {
 		?>
@@ -114,6 +101,6 @@
 	</div>
 </body>
 </html>
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="scripts/accordion.js"></script>
+<script src="plugins/jquery-1.12.1.min.js" type="text/javascript"></script>
+<script src="plugins/cssmenu/accordion.js"></script>
 <script src="scripts/admintools.js"></script>

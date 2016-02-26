@@ -1,5 +1,7 @@
 <?php
-	include("validateadmin.php");
+	//include("validateadmin.php");
+	//require("dbaction/dbRetrieveInfo.php");
+	//require ("infoUtils.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +9,15 @@
   <title>News Editor - Rose Drama Club</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="rosedramastyle.css" type="text/css" rel="stylesheet" />
+  <link href="styles/rosedramastyle.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="pagecontainer">
 		
-		<?php
-			include ("header.html");
-			require("dbaction/dbRetrieveInfo.php");
-			require ("infoUtils.php");
+		<?php include ("header.html");
 			
 			//Populate a datalist of all members
-			printAllMembersDatalist();
+			//printAllMembersDatalist();
 		?>
 		
 		<div class="content-item left-aligned-text">
@@ -33,7 +32,7 @@
 	</div>
 </body>
 </html>
-<script src="ckeditor/ckeditor.js"></script>
+<script src="plugins/ckeditor/ckeditor.js"></script>
 <script>
 CKEDITOR.replace('newsItemEditor');
 </script>

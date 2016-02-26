@@ -17,8 +17,8 @@ function setupDoc() {
 	if(scripttype === "mainstage") {
 		setupWriterInputDiv();
 		setupCastInputs();
-		var addCast = document.getElementById("add-cast-input");
-		addCast.onclick = addManyCastInputs;
+		//var addCast = document.getElementById("add-cast-input");
+		//addCast.onclick = addManyCastInputs;
 		var addWriter = document.getElementById("add-writer");
 		addWriter.onclick = addWriterInput;
 	}
@@ -207,9 +207,9 @@ function createCastInputDiv(index) {
 	var addbutton = document.createElement("input");
 	addbutton.setAttribute("type", "button");
 	addbutton.setAttribute("value", "Add");
-	addbutton.onclick = function() {
-		addManyToTable(membertable, index);
-	}
+//	addbutton.onclick = function() {
+//		addManyToTable(membertable, index);
+//	}
 	outerdiv.appendChild(addbutton);
 	return outerdiv;
 }
